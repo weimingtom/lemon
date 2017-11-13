@@ -4,7 +4,11 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
+#ifdef _MSC_VER
+#include <stdint.h>
+#else
 #include <inttypes.h>
+#endif
 
 #define ALIGN 8
 #define ROUNDUP(s) (((s) + ALIGN - 1) / ALIGN * ALIGN)

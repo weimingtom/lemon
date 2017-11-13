@@ -4,6 +4,7 @@
 *.opt
 *.suo
 *.sdf
+*.user
 Debug/
 Release/
 
