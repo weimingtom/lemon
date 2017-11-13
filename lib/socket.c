@@ -240,7 +240,7 @@ socket_connect(struct lemon *lemon, struct lobject *self, int argc, struct lobje
 
 	memset(&addr, 0, sizeof(addr));
 	addr.sin_family = AF_INET;
-#if _MSC_VER <= 1200
+#ifdef _MSC_VER
 	addr.sin_port = htons((unsigned short)port);
 #else
 	addr.sin_port = htons(port);

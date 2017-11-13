@@ -17,13 +17,15 @@
 #include <sys/stat.h>
 
 #ifdef WINDOWS
-#if _MSC_VER <= 1200
+#ifdef _MSC_VER
 	#define WIN32_LEAN_AND_MEAN
 	#include <windows.h>
 	#include <winsock2.h>  
 	#include <ws2tcpip.h> 
 	#include <io.h>
 	#define PATH_MAX MAX_PATH
+
+#pragma warning(disable:4996)
 #else
 #include <windows.h>
 #include <winsock2.h>
@@ -356,7 +358,7 @@ os_time(struct lemon *lemon, struct lobject *self, int argc, struct lobject *arg
 
 	time(&t);
 
-	return linteger_create_from_long(lemon, t);
+	return linteger_create_from_long(lemon, (long)t);
 }
 
 static struct lobject *

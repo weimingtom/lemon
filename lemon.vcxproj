@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+    <ProjectGuid>{93B431B6-DAD1-4656-9007-69A4BB7CEC87}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <MinimalRebuild>true</MinimalRebuild>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\Debug\lemon.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader />
+      <ObjectFileName>.\Debug\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+    </ClCompile>
+    <Midl>
+      <TypeLibraryName>.\Debug\lemon.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\lemon.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>.\Debug\lemon.exe</OutputFile>
+      <AdditionalDependencies>shlwapi.lib;ws2_32.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>.;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\lemon.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader />
+      <ObjectFileName>.\Release\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
+    </ClCompile>
+    <Midl>
+      <TypeLibraryName>.\Release\lemon.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\lemon.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>.\Release\lemon.exe</OutputFile>
+      <AdditionalDependencies>shlwapi.lib;ws2_32.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\allocator.c" />
+    <ClCompile Include="src\arena.c" />
+    <ClCompile Include="src\collector.c" />
+    <ClCompile Include="src\compiler.c" />
+    <ClCompile Include="src\extend.c" />
+    <ClCompile Include="src\generator.c" />
+    <ClCompile Include="src\hash.c" />
+    <ClCompile Include="src\input.c" />
+    <ClCompile Include="src\laccessor.c" />
+    <ClCompile Include="src\larray.c" />
+    <ClCompile Include="src\lboolean.c" />
+    <ClCompile Include="src\lclass.c" />
+    <ClCompile Include="src\lcontinuation.c" />
+    <ClCompile Include="src\lcoroutine.c" />
+    <ClCompile Include="src\ldictionary.c" />
+    <ClCompile Include="src\lemon.c" />
+    <ClCompile Include="src\lexception.c" />
+    <ClCompile Include="src\lexer.c" />
+    <ClCompile Include="src\lframe.c" />
+    <ClCompile Include="src\lfunction.c" />
+    <ClCompile Include="src\linstance.c" />
+    <ClCompile Include="src\linteger.c" />
+    <ClCompile Include="src\literator.c" />
+    <ClCompile Include="src\lkarg.c" />
+    <ClCompile Include="src\lmodule.c" />
+    <ClCompile Include="src\lnil.c" />
+    <ClCompile Include="src\lnumber.c" />
+    <ClCompile Include="src\lobject.c" />
+    <ClCompile Include="src\lsentinel.c" />
+    <ClCompile Include="src\lstring.c" />
+    <ClCompile Include="src\lsuper.c" />
+    <ClCompile Include="src\ltable.c" />
+    <ClCompile Include="src\ltype.c" />
+    <ClCompile Include="src\lvarg.c" />
+    <ClCompile Include="src\lvkarg.c" />
+    <ClCompile Include="src\machine.c" />
+    <ClCompile Include="src\main.c" />
+    <ClCompile Include="src\mpool.c" />
+    <ClCompile Include="src\opcode.c" />
+    <ClCompile Include="src\parser.c" />
+    <ClCompile Include="src\peephole.c" />
+    <ClCompile Include="src\scope.c" />
+    <ClCompile Include="src\shell.c" />
+    <ClCompile Include="src\symbol.c" />
+    <ClCompile Include="src\syntax.c" />
+    <ClCompile Include="src\table.c" />
+    <ClCompile Include="src\token.c" />
+    <ClCompile Include="lib\builtin.c" />
+    <ClCompile Include="lib\os.c" />
+    <ClCompile Include="lib\socket.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\allocator.h" />
+    <ClInclude Include="src\arena.h" />
+    <ClInclude Include="src\collector.h" />
+    <ClInclude Include="src\compiler.h" />
+    <ClInclude Include="src\extend.h" />
+    <ClInclude Include="src\generator.h" />
+    <ClInclude Include="src\hash.h" />
+    <ClInclude Include="src\input.h" />
+    <ClInclude Include="src\laccessor.h" />
+    <ClInclude Include="src\larray.h" />
+    <ClInclude Include="src\lboolean.h" />
+    <ClInclude Include="src\lclass.h" />
+    <ClInclude Include="src\lcontinuation.h" />
+    <ClInclude Include="src\lcoroutine.h" />
+    <ClInclude Include="src\ldictionary.h" />
+    <ClInclude Include="src\lemon.h" />
+    <ClInclude Include="src\lexception.h" />
+    <ClInclude Include="src\lexer.h" />
+    <ClInclude Include="src\lframe.h" />
+    <ClInclude Include="src\lfunction.h" />
+    <ClInclude Include="src\linstance.h" />
+    <ClInclude Include="src\linteger.h" />
+    <ClInclude Include="src\literator.h" />
+    <ClInclude Include="src\lkarg.h" />
+    <ClInclude Include="src\lmodule.h" />
+    <ClInclude Include="src\lnil.h" />
+    <ClInclude Include="src\lnumber.h" />
+    <ClInclude Include="src\lobject.h" />
+    <ClInclude Include="src\lsentinel.h" />
+    <ClInclude Include="src\lstring.h" />
+    <ClInclude Include="src\lsuper.h" />
+    <ClInclude Include="src\ltable.h" />
+    <ClInclude Include="src\ltype.h" />
+    <ClInclude Include="src\lvarg.h" />
+    <ClInclude Include="src\lvkarg.h" />
+    <ClInclude Include="src\machine.h" />
+    <ClInclude Include="src\mpool.h" />
+    <ClInclude Include="src\opcode.h" />
+    <ClInclude Include="src\parser.h" />
+    <ClInclude Include="src\peephole.h" />
+    <ClInclude Include="src\scope.h" />
+    <ClInclude Include="src\shell.h" />
+    <ClInclude Include="src\symbol.h" />
+    <ClInclude Include="src\syntax.h" />
+    <ClInclude Include="src\table.h" />
+    <ClInclude Include="src\token.h" />
+    <ClInclude Include="lib\builtin.h" />
+    <ClInclude Include="lib\os.h" />
+    <ClInclude Include="lib\socket.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -2,6 +2,8 @@
 *.plg
 *.aps
 *.opt
+*.suo
+*.sdf
 Debug/
 Release/
 
