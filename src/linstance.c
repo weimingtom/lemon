@@ -10,6 +10,10 @@
 #include <stdio.h>
 #include <string.h>
 
+#ifdef _MSC_VER
+#define snprintf _snprintf
+#endif
+
 static struct lobject *
 linstance_call(struct lemon *lemon,
                struct lobject *self,

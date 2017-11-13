@@ -5,6 +5,10 @@
 #include <stdio.h>
 #include <string.h>
 
+#ifdef _MSC_VER
+#define snprintf _snprintf
+#endif
+
 static struct lobject *
 lkarg_eq(struct lemon *lemon, struct lkarg *a, struct lkarg *b)
 {

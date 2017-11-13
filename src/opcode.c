@@ -4,4 +4,5 @@
 int
 opcode_to_method(int opcode)
 {
+	return 0;
 }

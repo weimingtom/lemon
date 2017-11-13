@@ -8,15 +8,26 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <errno.h>
+#ifndef _MSC_VER
 #include <unistd.h>
+#endif
 #include <limits.h>
 #include <string.h>
 #include <stdlib.h>
 #include <sys/stat.h>
 
 #ifdef WINDOWS
+#if _MSC_VER <= 1200
+	#define WIN32_LEAN_AND_MEAN
+	#include <windows.h>
+	#include <winsock2.h>  
+	#include <ws2tcpip.h> 
+	#include <io.h>
+	#define PATH_MAX MAX_PATH
+#else
 #include <windows.h>
 #include <winsock2.h>
+#endif
 #else
 #include <sys/select.h>
 #endif

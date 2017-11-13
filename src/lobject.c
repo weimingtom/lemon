@@ -11,6 +11,10 @@
 #include <stdarg.h>
 #include <string.h>
 
+#ifdef _MSC_VER
+#define snprintf _snprintf
+#endif
+
 void *
 lobject_create(struct lemon *lemon, size_t size, lobject_method_t method)
 {

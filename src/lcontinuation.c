@@ -5,6 +5,10 @@
 #include <stdio.h>
 #include <string.h>
 
+#ifdef _MSC_VER
+#define snprintf _snprintf
+#endif
+
 static struct lobject *
 lcontinuation_call(struct lemon *lemon,
                    struct lcontinuation *self,

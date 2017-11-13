@@ -6,6 +6,10 @@
 #include <string.h>
 #include <assert.h>
 
+#ifdef _MSC_VER
+#define snprintf _snprintf
+#endif
+
 struct lobject *
 lframe_default_callback(struct lemon *lemon,
                         struct lframe *frame,

@@ -6,6 +6,10 @@
 #include <stdio.h>
 #include <string.h>
 
+#ifdef _MSC_VER
+#define snprintf _snprintf
+#endif
+
 static struct lobject *
 lexception_addtrace_attr(struct lemon *lemon,
                          struct lobject *self,

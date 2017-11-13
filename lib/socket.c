@@ -8,15 +8,97 @@
 
 #include <stdio.h>
 #include <string.h>
+#ifndef _MSC_VER
 #include <unistd.h>
+#endif
 
 #ifdef WINDOWS
 #ifndef _WIN32_WINNT
 #define _WIN32_WINNT 0x501
 #endif
+#if _MSC_VER <= 1200
+	#define WIN32_LEAN_AND_MEAN
+	#include <winsock2.h>  
+	#include <ws2tcpip.h> 
+	//#include <ws2ipdef.h>
+	#include <io.h>
+
+
+//https://github.com/mehdimu/d43a3/blob/master/postgresql-7.4.13/src/include/getaddrinfo.h
+//https://github.com/mehdimu/d43a3/blob/master/postgresql-7.4.13/src/port/getaddrinfo.c
+#ifndef NI_NUMERICHOST
+#define NI_NUMERICHOST	1
+#endif
+#ifndef NI_NUMERICSERV
+#define NI_NUMERICSERV	2
+#endif
+
+#ifndef EAI_FAIL
+#define EAI_BADFLAGS	-1
+#define EAI_NONAME		-2
+#define EAI_AGAIN		-3
+#define EAI_FAIL		-4
+#define EAI_FAMILY		-6
+#define EAI_SOCKTYPE	-7
+#define EAI_SERVICE		-8
+#define EAI_MEMORY		-10
+#define EAI_SYSTEM		-11
+#endif
+
+int
+getnameinfo(const struct sockaddr * sa, int salen,
+			char *node, int nodelen,
+			char *service, int servicelen, int flags)
+{
+	/* Invalid arguments. */
+	if (sa == NULL || (node == NULL && service == NULL))
+		return EAI_FAIL;
+
+	/* We don't support those. */
+	if ((node && !(flags & NI_NUMERICHOST))
+		|| (service && !(flags & NI_NUMERICSERV)))
+		return EAI_FAIL;
+
+#ifdef	HAVE_IPV6
+	if (sa->sa_family == AF_INET6)
+		return EAI_FAMILY;
+#endif
+
+	if (node)
+	{
+		int			ret = -1;
+
+		if (sa->sa_family == AF_INET)
+		{
+			char	   *p;
+
+			p = inet_ntoa(((struct sockaddr_in *) sa)->sin_addr);
+			ret = _snprintf(node, nodelen, "%s", p);
+		}
+		if (ret == -1 || ret > nodelen)
+			return EAI_MEMORY;
+	}
+
+	if (service)
+	{
+		int			ret = -1;
+
+		if (sa->sa_family == AF_INET)
+		{
+			ret = _snprintf(service, servicelen, "%d",
+						   ntohs(((struct sockaddr_in *) sa)->sin_port));
+		}
+		if (ret == -1 || ret > servicelen)
+			return EAI_MEMORY;
+	}
+
+	return 0;
+}
+#else
 #include <Winsock2.h>
 #include <Windows.h>
 #include <Ws2tcpip.h>
+#endif
 typedef int socklen_t;
 #else
 #include <netdb.h>

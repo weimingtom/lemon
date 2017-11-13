@@ -5,6 +5,10 @@
 #include <stdio.h>
 #include <string.h>
 
+#ifdef _MSC_VER
+#define snprintf _snprintf
+#endif
+
 static struct lobject *
 ltype_string(struct lemon *lemon, struct ltype *self)
 {

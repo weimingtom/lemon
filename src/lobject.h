@@ -1,6 +1,10 @@
 #ifndef LEMON_LOBJECT_H
 #define LEMON_LOBJECT_H
 
+#ifdef WINDOWS
+#include <stddef.h>
+#endif
+
 struct lemon;
 struct ltype;
 

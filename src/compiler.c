@@ -33,6 +33,14 @@
 #ifdef WINDOWS
 #include <windows.h>
 #include <Shlwapi.h>
+
+#ifndef PATH_MAX
+#define PATH_MAX MAX_PATH
+#endif
+#ifdef _MSC_VER
+#define snprintf _snprintf
+#endif
+
 #else
 #include <unistd.h>
 #endif

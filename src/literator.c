@@ -8,6 +8,10 @@
 #include <limits.h>
 #include <string.h>
 
+#ifdef _MSC_VER
+#define snprintf _snprintf
+#endif
+
 static struct lobject *
 literation_array_next_callback(struct lemon *lemon,
                                struct lframe *frame,

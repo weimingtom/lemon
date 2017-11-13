@@ -9,6 +9,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef _MSC_VER
+#define snprintf _snprintf
+#endif
+
 #define SMALLINT_MAX (long)(ULONG_MAX >> 2)
 #define SMALLINT_MIN (long)(-SMALLINT_MAX)
 
