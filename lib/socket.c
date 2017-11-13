@@ -45,7 +45,7 @@
 #define EAI_SYSTEM		-11
 #endif
 
-int
+static int
 getnameinfo(const struct sockaddr * sa, int salen,
 			char *node, int nodelen,
 			char *service, int servicelen, int flags)
@@ -185,7 +185,11 @@ socket_bind(struct lemon *lemon, struct lobject *self, int argc, struct lobject 
 	memset(&addr, 0, sizeof(addr));
 	addr.sin_family = AF_INET;
 	addr.sin_addr.s_addr = htons(INADDR_ANY);
+#if _MSC_VER <= 1200
+	addr.sin_port = htons((unsigned short)port);
+#else
 	addr.sin_port = htons(port);
+#endif
 
 	fd = linteger_to_long(lemon, argv[0]);
 	if (bind(fd, (struct sockaddr *)&addr, sizeof(addr)) == -1) {
@@ -236,7 +240,11 @@ socket_connect(struct lemon *lemon, struct lobject *self, int argc, struct lobje
 
 	memset(&addr, 0, sizeof(addr));
 	addr.sin_family = AF_INET;
+#if _MSC_VER <= 1200
+	addr.sin_port = htons((unsigned short)port);
+#else
 	addr.sin_port = htons(port);
+#endif
 	addr.sin_addr.s_addr = inet_addr(host);
 
 	fd = linteger_to_long(lemon, argv[0]);

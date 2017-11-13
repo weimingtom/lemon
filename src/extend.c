@@ -280,8 +280,15 @@ extend_div(extend_t *q, int n,
 
 			km = k + m;
 			y2 = y[m - 1] * EXTEND_BASE + y[m-2];
+#if _MSC_VER <= 1200
+#define EXTEND_BASE2 (1UL << (2 * EXTEND_BITS))
+			r3 = rem[km] * (EXTEND_BASE2) +
+			     rem[km-1] * EXTEND_BASE + rem[km-2];
+#undef EXTEND_BASE2
+#else
 			r3 = rem[km] * (EXTEND_BASE * EXTEND_BASE) +
 			     rem[km-1] * EXTEND_BASE + rem[km-2];
+#endif
 
 			qk = r3/y2;
 			if (qk >= EXTEND_BASE) {

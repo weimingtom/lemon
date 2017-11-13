@@ -226,7 +226,11 @@ os_select(struct lemon *lemon, struct lobject *self, int argc, struct lobject *a
 		if (maxfd < fd) {
 			maxfd = fd;
 		}
+#if _MSC_VER <= 1200
+		FD_SET((unsigned)fd, &rfds);
+#else
 		FD_SET(fd, &rfds);
+#endif
 	}
 
 	count = larray_length(lemon, argv[1]);
@@ -236,7 +240,11 @@ os_select(struct lemon *lemon, struct lobject *self, int argc, struct lobject *a
 		if (maxfd < fd) {
 			maxfd = fd;
 		}
+#if _MSC_VER <= 1200
+		FD_SET((unsigned)fd, &wfds);
+#else
 		FD_SET(fd, &wfds);
+#endif
 	}
 
 	count = larray_length(lemon, argv[2]);
@@ -246,7 +254,11 @@ os_select(struct lemon *lemon, struct lobject *self, int argc, struct lobject *a
 		if (maxfd < fd) {
 			maxfd = fd;
 		}
+#if _MSC_VER <= 1200
+		FD_SET((unsigned)fd, &xfds);
+#else
 		FD_SET(fd, &xfds);
+#endif
 	}
 
 	timeout = NULL;
